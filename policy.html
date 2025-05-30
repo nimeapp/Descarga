@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nimeon Beta</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a00f4, #00cfff);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(5px);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+      transition: fill 0.3s ease;
+    }
+
+    /* Cambia el ícono cuando está activo */
+    .menu-toggle.active svg {
+      fill: #d6b3ff;
+      transform: rotate(90deg);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      background: rgba(0, 0, 0, 0.95);
+      border-radius: 0 0 0 15px;
+      padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: -4px 0 15px rgba(0,0,0,0.7);
+      
+      /* Estado cerrado: fuera de la pantalla */
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      z-index: 1050;
+    }
+
+    nav.active {
+      /* Estado abierto: en su posición */
+      transform: translateX(0);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 25px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 90%;
+      margin-top: 40px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .logo {
+      max-width: 120px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .boton {
+      display: inline-block;
+      background: linear-gradient(to right, #ffffff, #d6b3ff);
+      color: #5a00b0;
+      padding: 14px 28px;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      margin-top: 15px;
+    }
+
+    .boton:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #ffe0ff, #ffffff);
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      nav {
+        position: static;
+        height: auto;
+        width: auto;
+        transform: none !important;
+        flex-direction: row;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        gap: 20px;
+      }
+
+      nav a {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 30px;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <h2><a href="index.html" style="color: white; text-decoration: none;">Nimeon</a></h2>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+    <svg viewBox="0 0 100 80" width="30" height="30">
+      <rect width="100" height="10"></rect>
+      <rect y="30" width="100" height="10"></rect>
+      <rect y="60" width="100" height="10"></rect>
+    </svg>
+  </button>
+  <nav id="menu" role="menu">
+    <a href="policy.html" role="menuitem" tabindex="0">Política de Privacidad</a>
+    <a href="terms.html" role="menuitem" tabindex="0">Términos y Condiciones</a>
+    <a href="delete.html" role="menuitem" tabindex="0">Eliminar Cuenta</a>
+  </nav>
+</header>
+
+  <h1>Política de Privacidad de Nimeon</h1>
+  <p><strong>Fecha de vigencia:</strong> 20/05/2025</p>
+
+  <p>Nimeon (nosotros, nuestro, la aplicación) se compromete a proteger la privacidad de sus usuarios (usted, su). Esta Política de Privacidad explica cómo recopilamos, usamos, almacenamos y protegemos su información personal cuando usa nuestra aplicación de anime disponible en Google Play.</p>
+
+  <h2>1. Información que recopilamos</h2>
+  <ul>
+    <li>Información personal que usted nos proporciona directamente: como nombre, correo electrónico, datos de perfil, si se registran o crean cuenta.</li>
+    <li>Información técnica: tipo de dispositivo, sistema operativo, identificadores únicos (como ID de publicidad), datos de uso y rendimiento de la app.</li>
+    <li>Datos de ubicación: solo si usted otorga permiso explícito.</li>
+    <li>Datos recopilados automáticamente: como cookies, identificadores de dispositivos y datos de interacción con la app para mejorar la experiencia.</li>
+  </ul>
+
+  <h2>2. Uso de la información</h2>
+  <ul>
+    <li>Proveer y mantener la app y sus funciones.</li>
+    <li>Personalizar su experiencia.</li>
+    <li>Enviar notificaciones y actualizaciones relevantes.</li>
+    <li>Cumplir con obligaciones legales y de seguridad.</li>
+    <li>Mejorar nuestro servicio mediante análisis estadísticos.</li>
+    <li>Detectar y prevenir fraudes y abusos.</li>
+  </ul>
+
+  <h2>3. Compartir información con terceros</h2>
+  <p>No vendemos su información personal. Podemos compartir datos con:</p>
+  <ul>
+    <li>Proveedores de servicios que nos ayudan a operar la app (hosting, análisis, publicidad).</li>
+    <li>Autoridades legales si es requerido por ley o para proteger derechos.</li>
+    <li>Socios comerciales sólo si usted lo autoriza.</li>
+  </ul>
+
+  <h2>4. Cookies y tecnologías similares</h2>
+  <p>Usamos cookies y tecnologías similares para mejorar la experiencia del usuario. Puede controlar o deshabilitar las cookies desde la configuración de su dispositivo, pero algunas funciones podrían no funcionar correctamente.</p>
+
+  <h2>5. Seguridad de los datos</h2>
+  <p>Implementamos medidas técnicas y organizativas razonables para proteger su información contra acceso no autorizado, alteración, divulgación o destrucción.</p>
+
+  <h2>6. Retención de datos</h2>
+  <p>Conservamos su información solo durante el tiempo necesario para cumplir con los fines descritos o según lo exija la ley.</p>
+
+  <h2>7. Derechos de los usuarios (según región)</h2>
+  <ul>
+    <li><strong>Usuarios en la Unión Europea (GDPR):</strong> tiene derecho a acceder, rectificar, borrar, limitar el tratamiento, oponerse y portar sus datos personales. Puede retirar su consentimiento en cualquier momento.</li>
+    <li><strong>Usuarios en California (CCPA):</strong> tiene derecho a saber qué datos se recopilan, solicitar su eliminación y no vender su información personal.</li>
+  </ul>
+  <p>Para ejercer estos derechos, contáctenos en la sección de contacto.</p>
+
+  <h2>8. Enlaces a terceros</h2>
+  <p>Nuestra app puede contener enlaces a sitios web o servicios de terceros. No somos responsables por las políticas de privacidad de esos sitios.</p>
+
+  <h2>9. Cambios a esta Política de Privacidad</h2>
+  <p>Podemos actualizar esta política ocasionalmente. Le notificaremos mediante la app o correo electrónico y pondremos la fecha de vigencia actualizada.</p>
+
+  <h2>10. Contacto</h2>
+  <p>Si tiene preguntas o desea ejercer sus derechos, puede contactarnos en:</p>
+  <p>Email: soporte@nimeon.com<br>
+  Dirección: [Monterrey Nuevo León]</p>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const btn = document.querySelector('.menu-toggle');
+      const isActive = menu.classList.toggle('active');
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-expanded', isActive);
+    }
+  </script>
+
+</body>
+</html>

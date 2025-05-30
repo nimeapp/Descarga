@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nimeon Beta</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a00f4, #00cfff);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(5px);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+      transition: fill 0.3s ease;
+    }
+
+    /* Cambia el ícono cuando está activo */
+    .menu-toggle.active svg {
+      fill: #d6b3ff;
+      transform: rotate(90deg);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      background: rgba(0, 0, 0, 0.95);
+      border-radius: 0 0 0 15px;
+      padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: -4px 0 15px rgba(0,0,0,0.7);
+      
+      /* Estado cerrado: fuera de la pantalla */
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      z-index: 1050;
+    }
+
+    nav.active {
+      /* Estado abierto: en su posición */
+      transform: translateX(0);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 25px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 90%;
+      margin-top: 40px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .logo {
+      max-width: 120px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .boton {
+      display: inline-block;
+      background: linear-gradient(to right, #ffffff, #d6b3ff);
+      color: #5a00b0;
+      padding: 14px 28px;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      margin-top: 15px;
+    }
+
+    .boton:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #ffe0ff, #ffffff);
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      nav {
+        position: static;
+        height: auto;
+        width: auto;
+        transform: none !important;
+        flex-direction: row;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        gap: 20px;
+      }
+
+      nav a {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 30px;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <h2><a href="index.html" style="color: white; text-decoration: none;">Nimeon</a></h2>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+    <svg viewBox="0 0 100 80" width="30" height="30">
+      <rect width="100" height="10"></rect>
+      <rect y="30" width="100" height="10"></rect>
+      <rect y="60" width="100" height="10"></rect>
+    </svg>
+  </button>
+  <nav id="menu" role="menu">
+    <a href="policy.html" role="menuitem" tabindex="0">Política de Privacidad</a>
+    <a href="terms.html" role="menuitem" tabindex="0">Términos y Condiciones</a>
+    <a href="delete.html" role="menuitem" tabindex="0">Eliminar Cuenta</a>
+  </nav>
+</header>
+
+  <h1>Términos y Condiciones de Uso</h1>
+  <p><strong>Fecha de entrada en vigor:</strong> 20/05/2025</p>
+
+  <p>Bienvenido a Nimeon. Por favor, lea estos Términos y Condiciones de Uso (“Términos”) cuidadosamente antes de utilizar la aplicación móvil Nimeon (la “App”), operada por [Nombre del desarrollador o empresa] (“nosotros”, “nuestro”, o “la empresa”). Al acceder o usar esta App, usted acepta quedar vinculado por estos Términos. Si no está de acuerdo con alguno de los términos aquí expuestos, le solicitamos que no utilice la App.</p>
+
+  <h2>1. Definiciones</h2>
+  <ul>
+    <li><strong>App:</strong> la aplicación móvil Nimeon, incluyendo todas sus funcionalidades, servicios, contenido y actualizaciones.</li>
+    <li><strong>Usuario:</strong> cualquier persona que acceda o utilice la App.</li>
+    <li><strong>Contenido:</strong> cualquier texto, imágenes, videos, audio, gráficos, software o materiales proporcionados en o a través de la App.</li>
+    <li><strong>Cuenta:</strong> perfil personal creado por el usuario para acceder a funcionalidades personalizadas de la App.</li>
+  </ul>
+
+  <h2>2. Aceptación de los Términos</h2>
+  <p>Al registrarse o utilizar la App, usted acepta cumplir y estar legalmente obligado por estos Términos, así como por todas las leyes y regulaciones aplicables. Estos Términos constituyen un acuerdo vinculante entre usted y nosotros.</p>
+
+  <h2>3. Requisitos de elegibilidad</h2>
+  <p>Usted declara y garantiza que tiene la edad mínima requerida para usar la App, que en la mayoría de jurisdicciones es de 13 años o la edad mínima legal aplicable. Si es menor, debe usar la App bajo supervisión de un adulto responsable. Nos reservamos el derecho de suspender o eliminar cuentas que no cumplan con este requisito.</p>
+
+  <h2>4. Registro y seguridad de la cuenta</h2>
+  <p>Para acceder a ciertas funcionalidades, puede ser necesario crear una cuenta. Usted se compromete a proporcionar información verdadera, precisa y completa al registrarse, y a mantener actualizados sus datos. Es responsable de la confidencialidad de su contraseña y cuenta, y de todas las actividades que ocurran bajo su cuenta. Debe notificarnos inmediatamente si sospecha de uso no autorizado.</p>
+
+  <h2>5. Licencia de uso</h2>
+  <p>Le otorgamos una licencia limitada, no exclusiva, intransferible y revocable para usar la App únicamente para fines personales, no comerciales, y conforme a estos Términos.</p>
+
+  <h2>6. Restricciones de uso</h2>
+  <p>Usted acepta no:</p>
+  <ul>
+    <li>Copiar, modificar, distribuir, vender, revender o explotar comercialmente la App o su contenido.</li>
+    <li>Acceder o usar la App para cualquier propósito ilegal o no autorizado.</li>
+    <li>Intentar interferir con el funcionamiento correcto de la App o burlar medidas de seguridad.</li>
+    <li>Recopilar o almacenar datos personales de otros usuarios sin consentimiento.</li>
+    <li>Usar robots, spiders, scrapers u otros medios automatizados para acceder o recopilar datos.</li>
+    <li>Publicar o transmitir contenido que sea ilegal, ofensivo, difamatorio, obsceno, amenazante o que infrinja derechos de terceros.</li>
+  </ul>
+
+  <h2>7. Propiedad intelectual</h2>
+  <p>Todos los derechos, títulos e intereses sobre la App, incluyendo pero no limitado a software, diseño, texto, gráficos, logos, iconos, imágenes, clips de audio y video, bases de datos y marcas registradas, son propiedad de nosotros o nuestros licenciantes. Nada en estos Términos transfiere a usted dichos derechos o licencias, salvo la licencia limitada de uso que se le concede.</p>
+
+  <h2>8. Contenido generado por usuarios</h2>
+  <p>Si la App permite a los usuarios subir o compartir contenido, usted conserva la propiedad de dicho contenido pero nos concede una licencia mundial, libre de regalías, sublicenciable y transferible para usar, reproducir, distribuir, mostrar y crear obras derivadas del contenido en relación con la App y su promoción.</p>
+  <p>Usted declara que posee todos los derechos necesarios sobre el contenido que publique y que no infringe derechos de terceros ni leyes aplicables.</p>
+
+  <h2>9. Privacidad y protección de datos</h2>
+  <p>El uso de su información personal se rige por nuestra Política de Privacidad, disponible en la App. Al usar la App, usted acepta la recopilación, uso y tratamiento de sus datos conforme a dicha política.</p>
+
+  <h2>10. Pagos y compras dentro de la App</h2>
+  <p>Algunas funciones o contenidos pueden requerir pago o suscripción. Todos los pagos se procesan a través de Google Play y están sujetos a sus términos. No somos responsables por problemas relacionados con pagos, reembolsos o cargos realizados por terceros. Es su responsabilidad revisar las políticas de Google Play.</p>
+
+  <h2>11. Cancelación y suspensión</h2>
+  <p>Nos reservamos el derecho de suspender, restringir o cancelar su acceso a la App sin previo aviso si considera que ha incumplido estos Términos o por razones de seguridad, mantenimiento o cualquier otra causa legítima.</p>
+
+  <h2>12. Descargo de responsabilidad</h2>
+  <p>La App se proporciona “tal cual” y “según disponibilidad” sin garantía alguna, expresa o implícita, incluyendo pero no limitado a garantías de comercialización, idoneidad para un propósito particular o no infracción.</p>
+  <p>No garantizamos que la App esté libre de errores, virus u otros componentes dañinos, ni que su acceso sea ininterrumpido.</p>
+
+  <h2>13. Limitación de responsabilidad</h2>
+  <p>En la máxima medida permitida por la ley, ni nosotros ni nuestros afiliados, empleados, agentes o proveedores seremos responsables por daños directos, indirectos, incidentales, especiales, consecuenciales o punitivos, pérdidas de datos, beneficios o cualquier otro daño derivado del uso o imposibilidad de uso de la App, incluso si hemos sido advertidos de dicha posibilidad.</p>
+
+  <h2>14. Indemnización</h2>
+  <p>Usted acepta indemnizar, defender y mantener indemne a nosotros y a nuestros representantes, empleados y agentes, de cualquier reclamación, daño, obligación, pérdida, responsabilidad, coste o deuda y gastos (incluyendo honorarios legales) que surjan de su uso indebido de la App, violación de estos Términos o infracción de derechos de terceros.</p>
+
+  <h2>15. Enlaces a terceros</h2>
+  <p>La App puede contener enlaces a sitios web o servicios de terceros que no controlamos. No somos responsables del contenido, políticas de privacidad o prácticas de estos terceros. La inclusión de dichos enlaces no implica aprobación o respaldo por nuestra parte.</p>
+
+  <h2>16. Cambios en los Términos</h2>
+  <p>Nos reservamos el derecho de modificar estos Términos en cualquier momento. Publicaremos la versión actualizada en la App y actualizaremos la fecha de vigencia. Su uso continuado de la App tras dichas modificaciones constituirá aceptación de los nuevos Términos.</p>
+
+  <h2>17. Ley aplicable y jurisdicción</h2>
+  <p>Estos Términos se regirán e interpretarán conforme a las leyes de México, sin considerar conflictos de leyes. Para la resolución de controversias, ambas partes se someten a la jurisdicción exclusiva de los tribunales competentes en México.</p>
+
+  <h2>18. Disposiciones generales</h2>
+  <ul>
+    <li>Si alguna disposición de estos Términos es considerada inválida o inaplicable, las demás disposiciones permanecerán en vigor.</li>
+    <li>Estos Términos constituyen el acuerdo completo entre usted y nosotros respecto a la App, reemplazando cualquier acuerdo previo.</li>
+  </ul>
+
+  <h2>19. Contacto</h2>
+  <p>Si tiene preguntas, dudas o desea contactarnos, puede hacerlo a través de:</p>
+  <p>Email: soporte@nimeon.com</p>
+  <p>Dirección: [Monterrey Nuev León México]</p>
+
+
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const btn = document.querySelector('.menu-toggle');
+      const isActive = menu.classList.toggle('active');
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-expanded', isActive);
+    }
+  </script>
+
+</body>
+</html>
